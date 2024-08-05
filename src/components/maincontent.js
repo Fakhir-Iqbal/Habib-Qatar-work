@@ -38,28 +38,22 @@ const Maincontent = (props) => {
     setRefresh(!refresh);
   }, [props.data]);
 
-  const fetchAPI = async (regionalCode, branchCode) => {
-    console.log("success to call api");
-    const urlParams = new URLSearchParams(window.location.search);
-    const myParam = urlParams.get("brcode");
-    console.log(myParam);
+  const fetchAPI = async () => {
+    const storedData = localStorage.getItem("data");
+    let parsedData = JSON.parse(storedData);
+    const brcode = parsedData.BRANCHID;
+    const regionid = parsedData.REGIONID;
+
     try {
-      // const res = await fetch(
-      //   // `http://nizamuddintai-001-site41.ctempurl.com/forexrates/currencyrates?brcode=${myParam}`
-      // );
-      // const data = await res.json();
-      // console.log(data)
-      // if (data) {
-      //   setData(data.currencies);
-      // } else {
-      // }
-      const url = `http://habibqatar.com.pk/TestService/${regionalCode}/${branchCode}`;
+      const url = `http://habibqatar.com.pk/TestService/${brcode}/${regionid}`;
+
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       const result = await response.json();
-      if (data) {
+      console.log(result);
+      if (result.length) {
         setData(result);
       }
     } catch (err) {
@@ -69,12 +63,8 @@ const Maincontent = (props) => {
 
   useEffect(() => {
     let IntervalForApi = setInterval(() => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const regionalCode = urlParams.get("regionalcode");
-      const branchCode = urlParams.get("brcode");
-      fetchAPI(regionalCode, branchCode);
       fetchAPI();
-    }, 30000);
+    }, 15000);
     return () => clearInterval(() => IntervalForApi);
   }, []);
 
@@ -107,10 +97,12 @@ const Maincontent = (props) => {
                   </div>
                 </div>
                 <div className="flex font-dm even:bg-white  odd:bg-theme1-100 text-5xl tracking-wide items-center w-full h-full justify-end pr-2 border border-slate-300 font-bold rounded-sm">
-                  {ele.currencyCode != "TT/DD" ? ele.buyingRate : "--"}
+                  {ele.currencyCode != "TT/DD"
+                    ? Number(ele.buyingRate.toFixed(2))
+                    : "--"}
                 </div>
                 <div className="flex font-dm odd:bg-white  even:bg-theme1-100 text-5xl tracking-wide items-center w-full h-full justify-end pr-2 border border-slate-300 font-bold rounded-sm">
-                  {ele.sellingRate || "--"}
+                  {Number(ele.sellingRate.toFixed(2)) || "--"}
                 </div>
               </Fragment>
             ))}
@@ -138,7 +130,7 @@ const Maincontent = (props) => {
                 --
               </div>
               <div className="flex font-dm odd:bg-white  even:bg-theme1-100 text-5xl tracking-wide items-center w-full h-full justify-end pr-2 border border-slate-300 font-bold rounded-sm">
-                {data[0].ttdd}
+                {data[0].ddttusdrate}
               </div>
             </>
           </div>

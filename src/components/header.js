@@ -21,17 +21,17 @@ const Header = (props) => {
     setSeconds(moment(new Date()).format("ss"));
   };
 
-  // const phoneNumbers = (number) => {
-  //   const sepratedNumber = number.split(",");
-  //   return sepratedNumber.map((ele) => (
-  //     <div className="flex items-center justify-start">
-  //       <div>
-  //         <FaPhoneAlt className="h-4  w-4" />
-  //       </div>
-  //       &nbsp;:&nbsp;<div>{ele}</div>
-  //     </div>
-  //   ));
-  // };
+  const phoneNumbers = (number) => {
+    const sepratedNumber = number.split(",");
+    return sepratedNumber.map((ele) => (
+      <div className="flex items-center justify-start">
+        <div>
+          <FaPhoneAlt className="h-4  w-4" />
+        </div>
+        &nbsp;:&nbsp;<div>{ele}</div>
+      </div>
+    ));
+  };
 
   return (
     <div className="flex text-[#6F183D] bg-theme1-100 border border-b border-[#e0e0e0] justify-between items-center h-full p-1 px-3  py-4 lg:py-8  w-full ">
@@ -56,9 +56,9 @@ const Header = (props) => {
           [{props.branchName}]
         </div>
       </div>
-      {/* <div className=" mt-3 flex flex-col items-end tracking-wide text-xl font-semibold">
+      <div className=" mt-3 flex flex-col items-end tracking-wide text-xl font-semibold">
         {phoneNumbers(props.phoneNumber)}
-      </div> */}
+      </div>
       {/* </div> */}
     </div>
   );
