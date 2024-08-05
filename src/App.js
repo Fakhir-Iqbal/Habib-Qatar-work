@@ -1,3 +1,4 @@
+// App.js
 import "./App.css";
 import "./components/ads.css";
 import Header from "./components/header";
