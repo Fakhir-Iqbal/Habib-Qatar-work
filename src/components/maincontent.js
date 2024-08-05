@@ -130,7 +130,7 @@ const Maincontent = (props) => {
                 --
               </div>
               <div className="flex font-dm odd:bg-white  even:bg-theme1-100 text-5xl tracking-wide items-center w-full h-full justify-end pr-2 border border-slate-300 font-bold rounded-sm">
-                {data[0].ttdd}
+                {data[0].ddttusdrate}
               </div>
             </>
           </div>

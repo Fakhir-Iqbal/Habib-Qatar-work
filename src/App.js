@@ -41,12 +41,12 @@ const ads = [
       Walmart partners with Ria to create Walmart-2-Walmart domestic money transfer service. Euronet acquires HiFX, a UK-based foreign exchange broker and payments provider.
       `,
   },
-  {
-    id: 4,
-    image: ramadan,
-    heading: null,
-    description: null,
-  },
+  // {
+  //   id: 4,
+  //   image: ramadan,
+  //   heading: null,
+  //   description: null,
+  // },
 ];
 
 // this function will update seach query
