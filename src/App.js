@@ -5,13 +5,10 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import Body from "./components/maincontent";
 import Ads from "./components/ads";
-import React, { useEffect, useRef, forwardRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import westernLogo from "./img/westernlogo.png";
 import moneyGramLogo from "./img/moneygramlogo.jpg";
 import riaLogo from "./img/rialogo.png";
-import HQLogo from "./img/logo.png";
-import ramadan from "./img/ramadan.png";
-import March23 from "./img/23March.jpeg";
 import logo from "./img/logo.png";
 const ads = [
   {
@@ -41,12 +38,6 @@ const ads = [
       Walmart partners with Ria to create Walmart-2-Walmart domestic money transfer service. Euronet acquires HiFX, a UK-based foreign exchange broker and payments provider.
       `,
   },
-  // {
-  //   id: 4,
-  //   image: ramadan,
-  //   heading: null,
-  //   description: null,
-  // },
 ];
 
 // this function will update seach query
@@ -153,44 +144,6 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   let currentIndex = 0;
-  //   if (data) {
-  //     const showNextObject = () => {
-  //       setVisibleObjectIndex(currentIndex);
-  //       currentIndex = (currentIndex + 1) % ads.length;
-
-  //       if (adRef.current) {
-  //         adRef.current.classList.add("animation");
-
-  //         const hideTimeout = setTimeout(() => {
-  //           if (adRef.current) {
-  //             adRef.current.classList.add("animation-out");
-  //             setTimeout(() => {
-  //               if (adRef.current) {
-  //                 adRef.current.classList.add("hidden");
-  //               }
-  //             }, 1000);
-  //           }
-  //         }, 10000);
-
-  //         const showNextTimeout = setTimeout(showNextObject, 30000);
-
-  //         return () => {
-  //           clearTimeout(hideTimeout);
-  //           clearTimeout(showNextTimeout);
-  //         };
-  //       }
-  //     };
-
-  //     const initialShowTimeout = setTimeout(showNextObject, 10000);
-
-  //     return () => {
-  //       clearTimeout(initialShowTimeout);
-  //     };
-  //   }
-  // }, [ads, data]);
-
   useEffect(() => {
     let currentIndex = 0;
     if (data) {
@@ -223,7 +176,7 @@ function App() {
         clearTimeout(initialShowTimeout);
       };
     }
-  }, [ads, data]);
+  }, [data]);
 
   const adRef = useRef(null);
 
